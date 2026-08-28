@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Connexion — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <h1>Gestion des Congés</h1>
+      <p>Connexion réservée au personnel RH.</p>
+      <form id="loginForm">
+        <div class="field">
+          <label>Identifiant</label>
+          <input type="text" id="username" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label>Mot de passe</label>
+          <div class="password-field">
+            <input type="password" id="password" autocomplete="current-password" required />
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Afficher le mot de passe" aria-pressed="false"><span class="password-eye" aria-hidden="true"></span></button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Se connecter</button>
+        <p class="error-text" id="errorText"></p>
+      </form>
+    </div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

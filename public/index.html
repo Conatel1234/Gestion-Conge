@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tableau de bord — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Ressources Humaines</div>
+        <h1 class="page-title">Tableau de bord</h1>
+        <p class="page-sub">Vue d'ensemble des congés pour l'exercice fiscal en cours.</p>
+      </div>
+
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="section-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="margin:0; font-size:15px;">Reprises de service à venir (7 jours)</h3>
+        </div>
+        <div class="reprise-list" id="repriseList"></div>
+      </div>
+
+      <div class="section-card">
+        <h3 style="margin:0 0 10px; font-size:15px;">Charger / changer d'exercice fiscal</h3>
+        <div id="exerciceList" style="margin-bottom:12px;"></div>
+        <form id="exerciceForm" class="field-row" style="align-items:end;">
+          <div class="field" style="margin-bottom:0;">
+            <label>Libellé</label>
+            <input type="text" id="exLabel" placeholder="2026-2027" required />
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Début</label>
+            <input type="date" id="exDebut" required />
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Fin</label>
+            <input type="date" id="exFin" required />
+          </div>
+          <button type="submit" class="btn btn-dark" style="height:38px;">Créer et activer</button>
+        </form>
+        <p class="error-text" id="exerciceError" style="margin-top:8px;"></p>
+      </div>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

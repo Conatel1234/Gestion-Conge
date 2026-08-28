@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Types de congé — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Configuration</div>
+        <h1 class="page-title">Types de congé</h1>
+        <p class="page-sub">Chaque type possède son propre quota de jours par exercice fiscal.</p>
+      </div>
+
+      <div class="toolbar" style="justify-content:flex-end;">
+        <button class="btn btn-dark" id="newTypeBtn">+ Nouveau type</button>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead><tr><th>Nom</th><th>Quota (jours/an)</th><th>Couleur</th><th>Statut</th><th></th></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header"><h3 id="modalTitle">Nouveau type</h3><button class="close-btn" id="closeModal">✕</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="typeId" />
+        <div class="field"><label>Nom</label><input type="text" id="typeNom" placeholder="ex: Congé Annuel" /></div>
+        <div class="field"><label>Quota de jours par exercice</label><input type="number" min="0" id="typeQuota" /></div>
+        <div class="field"><label>Couleur</label><input type="color" id="typeCouleur" value="#10b981" /></div>
+        <input type="hidden" id="typeActif" value="true" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancelBtn">Annuler</button>
+        <button class="btn btn-dark" id="saveBtn">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/types.js"></script>
+</body>
+</html>

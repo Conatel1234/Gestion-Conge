@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Congés — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="print-document-header" id="documentHeader"></div>
+      <div class="page-header">
+        <div class="eyebrow">Ressources Humaines</div>
+        <h1 class="page-title">Congés</h1>
+        <p class="page-sub">Journal des congés — jours ouvrés uniquement (weekends et jours off exclus).</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="filter-pills" id="filterPills">
+          <button class="pill active" data-status="TOUS">Tous</button>
+          <button class="pill" data-status="EN_COURS">En congé</button>
+          <button class="pill" data-status="A_VENIR">À venir</button>
+          <button class="pill" data-status="TERMINE">Historique</button>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <select id="directionFilter" class="filter-select"><option value="">Toutes les directions</option></select>
+          <select id="employeeStatusFilter" class="filter-select"><option value="">Tous les statuts</option><option value="employe">Employés</option><option value="contractuel">Contractuels</option></select>
+          <div class="search-box">
+            <span class="icon">⌕</span>
+            <input type="text" id="searchInput" placeholder="Rechercher…" />
+          </div>
+          <button class="btn btn-outline" id="exportExcelBtn">Export Excel</button>
+          <button class="btn btn-outline" id="exportPdfBtn">Export PDF</button>
+          <button class="btn btn-outline" id="printActiveBtn">Imprimer actifs</button>
+          <button class="btn btn-primary" id="newLeaveBtn">+ Nouveau congé</button>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Employé</th><th>Direction</th><th>Statut</th><th>Type</th><th>Période</th>
+              <th>J. demandés</th><th>J. restants</th><th>Reprise</th><th>Statut congé</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Nouveau congé</h3>
+        <button class="close-btn" id="closeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="recordId" />
+        <div class="field">
+          <label>Employé</label>
+          <select id="employeeSelect"></select>
+        </div>
+        <div class="field">
+          <label>Type de congé</label>
+          <select id="typeSelect"></select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Date de début</label><input type="date" id="dateDebut" /></div>
+          <div class="field"><label>Date de fin</label><input type="date" id="dateFin" /></div>
+        </div>
+        <div class="field"><label>Note (optionnel)</label><textarea id="note" rows="2"></textarea></div>
+        <div class="hint-box" id="hintBox" style="display:none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancelBtn">Annuler</button>
+        <button class="btn btn-primary" id="saveBtn">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/documentHeader.js"></script>
+  <script src="js/conges.js"></script>
+</body>
+</html>

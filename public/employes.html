@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employés — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Ressources Humaines</div>
+        <h1 class="page-title">Employés</h1>
+        <p class="page-sub">Répertoire du personnel. Cliquez un employé pour voir son solde de congés.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <span class="icon">⌕</span>
+          <input type="text" id="searchInput" placeholder="Rechercher…" />
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-outline" id="printSelectedBtn" disabled>Imprimer sélection</button>
+          <button class="btn btn-outline" id="importCsvBtn">↑ Importer CSV</button>
+          <button class="btn btn-outline" id="exportCsvBtn">↓ Exporter CSV</button>
+          <button class="btn btn-dark" id="newEmpBtn">+ Ajouter un employé</button>
+        </div>
+      </div>
+      <input type="file" id="importCsvInput" accept=".csv,text/csv" hidden />
+
+      <div class="table-card">
+        <table>
+          <thead><tr><th class="selection-column"><input type="checkbox" id="selectAllEmployees" title="Sélectionner tous les employés" /></th><th>Nom</th><th>Prénom</th><th>Direction</th><th>Statut</th><th>Date d'embauche</th><th>Ancienneté</th><th>Informations congés</th></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header"><h3 id="modalTitle">Nouvel employé</h3><button class="close-btn" id="closeModal">✕</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="empId" />
+        <div class="field"><label>Nom</label><input type="text" id="empNom" /></div>
+        <div class="field"><label>Prénom</label><input type="text" id="empPrenom" /></div>
+        <div class="field"><label>Direction</label><input type="text" id="empDirection" placeholder="ex: Ressources Humaines" /></div>
+        <div class="field"><label>Statut</label><select id="empStatut"><option value="employe">Employé</option><option value="contractuel">Contractuel</option></select></div>
+        <div class="field"><label>Date d'embauche</label><input type="date" id="empEmbauche" /></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancelBtn">Annuler</button>
+        <button class="btn btn-dark" id="saveBtn">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/documentHeader.js"></script>
+  <script src="js/employes.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil employé — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="print-document-header" id="documentHeader"></div>
+      <a href="employes.html" class="back-link">← Retour aux employés</a>
+      <div class="page-header">
+        <div class="eyebrow">Fiche employé</div>
+        <h1 class="page-title" id="empName">…</h1>
+        <p class="page-sub" id="empMeta"></p>
+        <div class="print-actions">
+          <select id="printLeaveFilter" class="filter-select" aria-label="Congés à imprimer">
+            <option value="PRISES_AVENIR">Congés pris et à venir</option>
+            <option value="PRISES">Congés pris ou en cours</option>
+            <option value="AVENIR">Congés à venir</option>
+          </select>
+          <button class="btn btn-outline profile-print-btn" id="printProfileBtn">Imprimer la fiche</button>
+        </div>
+      </div>
+
+      <div class="screen-only" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h3 style="font-size:15px; margin:0;">Solde de congés par type</h3>
+        <div class="field" style="margin-bottom:0; min-width:220px;">
+          <select id="exerciceSelect" style="padding:7px 10px; border:1px solid #e2e8f0; border-radius:8px; font-size:13px;"></select>
+        </div>
+      </div>
+      <div id="balancesWrap" class="screen-only"></div>
+
+      <h3 class="print-history-heading" style="font-size:15px; margin:22px 0 8px;">Historique des congés</h3>
+      <div class="table-card">
+        <table>
+          <thead><tr><th>Exercice</th><th>Type</th><th>Période</th><th>J. demandés</th><th>Reprise</th><th>Statut</th></tr></thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/documentHeader.js"></script>
+  <script src="js/employe.js"></script>
+</body>
+</html>

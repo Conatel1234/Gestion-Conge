@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sauvegarde et restauration — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Protection des données</div>
+        <h1 class="page-title">Sauvegarde et restauration</h1>
+        <p class="page-sub">Téléchargez une copie des données ou restaurez une sauvegarde existante.</p>
+      </div>
+      <div class="backup-grid">
+        <section class="section-card backup-panel">
+          <div class="backup-icon">↓</div>
+          <h2>Créer une sauvegarde</h2>
+          <p>Exporte toutes les données enregistrées dans un fichier JSON portable.</p>
+          <button class="btn btn-primary" id="downloadBackupBtn">Télécharger la sauvegarde</button>
+        </section>
+        <section class="section-card backup-panel">
+          <div class="backup-icon">↑</div>
+          <h2>Restaurer une sauvegarde</h2>
+          <p>La restauration remplacera les données actuelles par celles du fichier choisi.</p>
+          <input type="file" id="restoreBackupInput" accept="application/json,.json" hidden />
+          <button class="btn btn-outline" id="restoreBackupBtn">Choisir un fichier JSON</button>
+          <p class="backup-file" id="backupFileName">Aucun fichier sélectionné</p>
+        </section>
+      </div>
+      <div class="hint-box backup-warning">Avant une restauration, téléchargez une sauvegarde actuelle. Cette opération remplace les employés, congés, types, jours fériés et exercices fiscaux.</div>
+      <p class="error-text" id="backupMessage"></p>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/backups.js"></script>
+</body>
+</html>

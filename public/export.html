@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Export par direction — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Ressources Humaines</div>
+        <h1 class="page-title">Export par direction</h1>
+        <p class="page-sub">Générez la liste des congés (Excel ou PDF) pour une direction et un exercice fiscal donnés.</p>
+      </div>
+
+      <div class="section-card" style="max-width:520px;">
+        <div class="field">
+          <label>Direction</label>
+          <select id="directionSelect"></select>
+        </div>
+        <div class="field">
+          <label>Exercice fiscal</label>
+          <select id="exerciceSelect"></select>
+        </div>
+
+        <div id="previewCount" style="font-size:13px; color:#475569; margin:14px 0;"></div>
+
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-outline" id="excelBtn">Télécharger Excel (.xlsx)</button>
+          <button class="btn btn-primary" id="pdfBtn">Télécharger PDF</button>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top:16px;">
+        <table>
+          <thead>
+            <tr><th>Nom</th><th>Prénom</th><th>Type</th><th>Période</th><th>J. demandés</th><th>Statut</th></tr>
+          </thead>
+          <tbody id="previewBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/export.js"></script>
+</body>
+</html>

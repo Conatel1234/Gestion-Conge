@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jours off — Gestion des Congés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div class="page-header">
+        <div class="eyebrow">Configuration</div>
+        <h1 class="page-title">Jours fériés / off</h1>
+        <p class="page-sub">Ces dates sont automatiquement exclues du calcul des jours ouvrés de congé.</p>
+      </div>
+
+      <div class="toolbar" style="justify-content:flex-end;">
+        <button class="btn btn-outline" id="importHolidaysBtn">↑ Importer CSV/PDF</button>
+        <button class="btn btn-dark" id="newHolidayBtn">+ Nouveau jour off</button>
+      </div>
+      <input type="file" id="importHolidaysInput" accept=".csv,.pdf,text/csv,application/pdf" hidden />
+
+      <div class="table-card">
+        <table>
+          <thead><tr><th>Date</th><th>Libellé</th><th></th></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header"><h3 id="modalTitle">Nouveau jour off</h3><button class="close-btn" id="closeModal">✕</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="holidayId" />
+        <div class="field"><label>Date</label><input type="date" id="holidayDate" /></div>
+        <div class="field"><label>Libellé</label><input type="text" id="holidayLabel" placeholder="ex: Fête du Drapeau" /></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancelBtn">Annuler</button>
+        <button class="btn btn-dark" id="saveBtn">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/feries.js"></script>
+</body>
+</html>
