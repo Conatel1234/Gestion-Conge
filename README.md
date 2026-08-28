@@ -71,6 +71,40 @@ npm run dev
 Ouvrez ensuite **http://localhost:3000** — vous serez redirigé vers la page de
 connexion.
 
+## Déploiement en production avec PM2
+
+### 1. Installer PM2 globalement
+```bash
+npm install -g pm2
+```
+
+### 2. Configurer l'environnement de production
+Assurez-vous que votre fichier `.env` contient :
+- Identifiants PostgreSQL de production
+- `SESSION_SECRET` sécurisé (généré aléatoirement)
+- Port approprié (défaut : 3000)
+
+### 3. Démarrer avec PM2
+```bash
+pm2 start ecosystem.config.js
+```
+
+### 4. Commandes PM2 utiles
+```bash
+pm2 list                    # Voir tous les processus
+pm2 logs gestion-conge      # Voir les logs
+pm2 stop gestion-conge      # Arrêter l'application
+pm2 restart gestion-conge   # Redémarrer l'application
+pm2 delete gestion-conge    # Supprimer de PM2
+pm2 monit                   # Surveiller CPU/mémoire
+```
+
+### 5. Démarrage automatique au boot
+```bash
+pm2 startup
+pm2 save
+```
+
 ## Structure du projet
 
 ```
