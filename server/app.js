@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const path = require('path');
 const cors = require('cors');
 const session = require('express-session');
@@ -19,11 +20,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+if (process.env.VERCEL) {
+  app.set('trust proxy', 1);
+}
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev_secret_change_me',
   resave: false,
   saveUninitialized: false,
-  cookie: { httpOnly: true, maxAge: 8 * 60 * 60 * 1000 }, // 8h
+  cookie: { 
+    httpOnly: true, 
+    maxAge: 8 * 60 * 60 * 1000, // 8h
+    secure: process.env.NODE_ENV === 'production' || !!process.env.VERCEL, // Required for HTTPS on Vercel
+    sameSite: 'lax'
+  },
 }));
 // Mount API routes
 
@@ -51,5 +61,11 @@ app.use(express.static(publicPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
-
+app.use((err, req, res, next) => {
+  console.error('Unhandled Server Error:', err.stack || err);
+  res.status(500).json({ 
+    error: 'Internal Server Error', 
+    message: err.message 
+  });
+});
 module.exports = app;
