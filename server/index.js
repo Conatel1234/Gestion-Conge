@@ -40,11 +40,7 @@ app.use('/api/backups', requireAuth, backupRoutes);
 app.use('/images', express.static(path.join(__dirname, '..', 'images')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-module.exports = app;
-
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Gestion des Conges - serveur demarre sur http://localhost:${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Gestion des Conges - serveur demarre sur http://localhost:${PORT}`);
+});
