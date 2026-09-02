@@ -1,7 +1,7 @@
 const express = require('express');
 require('express-async-errors');
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const session = require('express-session');
 
 const { requireAuth } = require('./middleware/auth');
@@ -17,7 +17,7 @@ const backupRoutes = require('./routes/backups');
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 if (process.env.VERCEL) {
