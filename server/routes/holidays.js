@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('../db');
-const { PDFParse } = require('pdf-parse');
+const { PDFParse } = require('pdf-parse/lib/pdf-parse.js');
 
 const router = express.Router();
 
